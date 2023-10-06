@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -32,5 +33,21 @@ public class Buyer {
     @JsonIgnore
     private Set<Purchase> purchases = new HashSet<>();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Buyer buyer = (Buyer) o;
+        return Objects.equals(id, buyer.id) && Objects.equals(firstName, buyer.firstName) && Objects.equals(lastName, buyer.lastName) && Objects.equals(purchases, buyer.purchases);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, purchases);
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
+    }
 }
