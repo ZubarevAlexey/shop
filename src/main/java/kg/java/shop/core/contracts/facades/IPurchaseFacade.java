@@ -7,7 +7,7 @@ import kg.java.shop.core.models.dtos.purchase.*;
 import org.springframework.http.HttpStatus;
 
 public interface IPurchaseFacade {
-    PurchaseDto register(CreatedPurchaseDto model) throws EntityDuplicateExceptions;
+    PurchaseDto register(CreatedPurchaseDto model) throws EntityDuplicateExceptions, EntityNotFoundException;
 
     PurchaseDto update(UpdatedPurchaseDto model) throws EntityNotFoundException;
 
