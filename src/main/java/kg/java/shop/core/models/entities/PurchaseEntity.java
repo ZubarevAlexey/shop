@@ -1,4 +1,4 @@
-package kg.java.shop.core.models.entity;
+package kg.java.shop.core.models.entities;
 
 import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -15,7 +15,7 @@ import java.util.Objects;
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Builder(toBuilder = true)
-public class Purchase {
+public class PurchaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
@@ -26,17 +26,17 @@ public class Purchase {
 
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")
-    private Product product;
+    private ProductEntity product;
 
     @ManyToOne
     @JoinColumn(name = "buyer_id", referencedColumnName = "id")
-    private Buyer buyer;
+    private BuyerEntity buyer;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Purchase purchase = (Purchase) o;
+        PurchaseEntity purchase = (PurchaseEntity) o;
         return Objects.equals(id, purchase.id) && Objects.equals(datePurchase, purchase.datePurchase)
                 && Objects.equals(product, purchase.product) && Objects.equals(purchase, purchase.buyer);
     }

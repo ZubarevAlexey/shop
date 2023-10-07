@@ -1,12 +1,10 @@
-package kg.java.shop.configuration.mappers;
+package kg.java.shop.core.mappers.base;
 
-import kg.java.shop.core.mappers.buyermapper.BuyerMapper;
-import kg.java.shop.core.mappers.productmapper.ProductMapper;
-import kg.java.shop.core.mappers.purchasemapper.PurchaseMapper;
+import kg.java.shop.core.mappers.BuyerMapper;
+import kg.java.shop.core.mappers.ProductMapper;
+import kg.java.shop.core.mappers.PurchaseMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.persistence.Column;
 
 @Configuration
 public class MappersConfig {

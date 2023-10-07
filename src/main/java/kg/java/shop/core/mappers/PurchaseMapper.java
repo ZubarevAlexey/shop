@@ -1,14 +1,14 @@
-package kg.java.shop.core.mappers.purchasemapper;
+package kg.java.shop.core.mappers;
 
 import kg.java.shop.core.models.dtos.buyer.BuyerSearchDataDto;
 import kg.java.shop.core.models.dtos.product.ProductSearchDataDto;
 import kg.java.shop.core.models.dtos.purchase.CreatedPurchaseDto;
 import kg.java.shop.core.models.dtos.purchase.PurchaseDto;
 import kg.java.shop.core.models.dtos.purchase.UpdatedPurchaseDto;
-import kg.java.shop.core.models.entity.Purchase;
+import kg.java.shop.core.models.entities.PurchaseEntity;
 
 public class PurchaseMapper {
-    public PurchaseDto toDomain(Purchase model) {
+    public PurchaseDto toDomain(PurchaseEntity model) {
         var buyer = model.getBuyer();
         var product = model.getProduct();
         return PurchaseDto.builder()
@@ -25,13 +25,13 @@ public class PurchaseMapper {
                 .build();
     }
 
-    public Purchase fromDomain(CreatedPurchaseDto model){
-        return Purchase.builder()
+    public PurchaseEntity fromDomain(CreatedPurchaseDto model){
+        return PurchaseEntity.builder()
                 .datePurchase(model.getDatePurchase())
                 .build();
     }
-    public Purchase fromDomain(UpdatedPurchaseDto model){
-        return Purchase.builder()
+    public PurchaseEntity fromDomain(UpdatedPurchaseDto model){
+        return PurchaseEntity.builder()
                 .datePurchase(model.getDatePurchase())
                 .build();
     }

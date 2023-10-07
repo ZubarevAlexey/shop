@@ -1,4 +1,4 @@
-package kg.java.shop.core.models.entity;
+package kg.java.shop.core.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -17,36 +17,38 @@ import java.util.Set;
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Builder(toBuilder = true)
-public class Product {
+public class BuyerEntity {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id", nullable = false)
     private Long id;
 
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
 
-    private Long cost;
+    @Column(name = "last_name")
+    private String lastName;
 
-    @OneToMany(mappedBy= "product")
+
+    @OneToMany(mappedBy = "buyer")
     @JsonIgnore
-    private Set<Purchase> purchases = new HashSet<>();
+    private Set<PurchaseEntity> purchases = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(cost, product.cost) && Objects.equals(purchases, product.purchases);
+        BuyerEntity buyer = (BuyerEntity) o;
+        return Objects.equals(id, buyer.id) && Objects.equals(firstName, buyer.firstName) && Objects.equals(lastName, buyer.lastName) && Objects.equals(purchases, buyer.purchases);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, cost, purchases);
+        return Objects.hash(id, firstName, lastName, purchases);
     }
 
     @Override
     public String toString() {
-        return name;
+        return firstName + " " + lastName;
     }
 }
