@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 
 public interface IProductFacade {
 
-    ProductDto register(CreatedProductDto model) throws EntityDuplicateExceptions;
+    ProductDto register(CreatedProductDto model) throws EntityDuplicateExceptions, EntityNotFoundException;
     ProductDto update(UpdatedProductDto model)throws EntityNotFoundException;
     HttpStatus delete(DeleteProductDto model) throws EntityNotFoundException;
     ProductDto getById(FindByIdProductDto model) throws EntityNotFoundException;
