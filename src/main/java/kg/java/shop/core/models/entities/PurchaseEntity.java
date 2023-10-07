@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
+@Table(name = "purchase", schema = "public", catalog = "postgres")
 @Getter
 @Setter
 @NoArgsConstructor
